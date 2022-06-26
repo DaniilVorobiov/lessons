@@ -20,5 +20,5 @@ for(let i = 0;i < arrayNumber.length;i++){
 }
 sum = sum**3;
 let arraySum = (""+sum).split("").map(Number);
-console.log(arraySum[0],arraySum[1]); 
-//nhti
+console.log(arraySum[0],arraySum[1]);
+
