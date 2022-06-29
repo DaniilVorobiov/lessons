@@ -28,7 +28,7 @@ let AllServicePrices = getAllServicePrices(servicePrice1,servicePrice2)
 switch (true) {
     case fullPrice >= 30000:
         console.log("Даем скидку в 10%");
-        break;
+        break; 
     case 30000 > fullPrice > 15000:
         console.log("Даем скидку в 5%");
         break;
