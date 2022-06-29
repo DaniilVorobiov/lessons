@@ -1,15 +1,4 @@
-const getAllServicePrices = function() {
-    return servicePrice1 + servicePrice2
-}
-function getFullPrice() {
-    return screenPrice + AllServicePrices
-}
-function getTitle(title) {
-    return title.charAt(0).toUpperCase() + title.slice(1)
-}
-function getServicePercentPrices(fullPrice,rollback) {
-    return fullPrice - rollback
-}
+
 let title = prompt('Как называется ваш проект?');
 let screens = prompt('Какие типы экранов нужно разработать?');
 let screenPrice = +prompt('Сколько будет стоить данная работа?');
@@ -18,11 +7,30 @@ let service1 = prompt('Какой дополнительный тип услуг
 let servicePrice1 = +prompt('Сколько это будет стоить?');
 let service2 = prompt('Какой дополнительный тип услуги нужен?');
 let servicePrice2 = +prompt('Сколько это будет стоить?');
-let fullPrice = getFullPrice(screenPrice,getAllServicePrices);
 let rollback = 50;
-let servicePercentPrice = Math.ceil(getServicePercentPrices(fullPrice,rollback));
-let AllServicePrices = getAllServicePrices(servicePrice1,servicePrice2)
 
+let allServicePrices;
+let servicePercentPrice;
+let AllServicePrices;
+let fullPrice;
+
+const getAllServicePrices = function() {
+    return servicePrice1 + servicePrice2;
+}
+function getFullPrice() {
+    return screenPrice + AllServicePrices;
+}
+function getTitle() {
+    return title.charAt(0).toUpperCase() + title.slice(1);
+}
+function getServicePercentPrices() {
+    return fullPrice - rollback;
+}
+
+allServicePrices = getAllServicePrices(); 
+fullPrice = getFullPrice();
+title = getTitle();
+servicePercentPrice = getServicePercentPrices();
 
 
 switch (true) {
@@ -43,7 +51,7 @@ switch (true) {
 console.log(typeof title);
 console.log(typeof fullPrice);
 console.log(typeof adaptive);
-console.log(screens.length);
+console.log(screens);
 console.log("Стоимость верстки экранов " + screenPrice + " рублей/долларов/гривен/юани");
 console.log("Стоимость разработки " + fullPrice + " рублей/долларов/гривен/юани");
 console.log(screens.toLowerCase().toString().split(", "));
