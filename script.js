@@ -8,8 +8,21 @@ let servicePercentPrice;
 let fullPrice;
 let service1;
 let service2;
+
+function checkSpaces(str) {
+    return str.trim() !== '';
+}
+
+function checkSpaces2(str) {
+    let toArrayNumber = str.split("")
+    if (toArrayNumber[0] === ' ' || length.toArrayNumber === ' ') {
+        return false
+
+    } else{
+        return true;
+}}
 const isNumber = function (num) {
-    return !isNaN(parseFloat(num)) && isFinite(num)
+    return !isNaN(parseFloat(num)) && isFinite(num) && checkSpaces(toString(num)) && checkSpaces2(toString(num))
 }
 const asking = function () {
     title = prompt('Как называется ваш проект?', "пРоЕкТ");
@@ -17,7 +30,7 @@ const asking = function () {
     do {
         screenPrice = prompt('Сколько будет стоить данная работа?');
     } while (!isNumber(screenPrice));
-    
+
     adaptive = confirm('Нужен ли адаптив на сайте?');
 }
 
@@ -33,7 +46,7 @@ const getAllServicePrices = function () {
         do {
             sum = prompt('Сколько это будет стоить?', 1000);
         } while (!isNumber(sum));
-        fullSum+=parseInt(sum);
+        fullSum += parseInt(sum);
     }
     return parseInt(fullSum);
 };
@@ -82,4 +95,3 @@ console.log("Стоимость верстки экранов " + screenPrice + 
 console.log("Стоимость разработки " + fullPrice + " рублей/долларов/гривен/юани");
 console.log(screens.toLowerCase().split(", "));
 console.log(servicePercentPrice);
-console.log(fullSum)
