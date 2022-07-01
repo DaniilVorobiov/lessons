@@ -30,12 +30,12 @@ const getAllServicePrices = function () {
         } else if (i === 1) {
             service2 = prompt('Какой дополнительный тип услуги нужен?', "Метрика");
         }
-        while (!isNumber(sum)) {
+        do {
             sum = prompt('Сколько это будет стоить?', 1000);
-        } 
-        fullSum+=sum;
+        } while (!isNumber(sum));
+        fullSum+=parseInt(sum);
     }
-    return fullSum;
+    return parseInt(fullSum);
 };
 
 function getFullPrice() {
@@ -82,3 +82,4 @@ console.log("Стоимость верстки экранов " + screenPrice + 
 console.log("Стоимость разработки " + fullPrice + " рублей/долларов/гривен/юани");
 console.log(screens.toLowerCase().split(", "));
 console.log(servicePercentPrice);
+console.log(fullSum)
