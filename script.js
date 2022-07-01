@@ -1,27 +1,45 @@
-let title = prompt('Как называется ваш проект?', "пРоЕкТ");
-let screens = prompt('Какие типы экранов нужно разработать?', "Простые");
-let screenPrice = +prompt('Сколько будет стоить данная работа?', 1000);
-let adaptive = confirm('Нужен ли адаптив на сайте?');
-let service1 = prompt('Какой дополнительный тип услуги нужен?', "Метрика");
-let servicePrice1 = +prompt('Сколько это будет стоить?', 1000);
-let service2 = prompt('Какой дополнительный тип услуги нужен?', "Метрика");
-let servicePrice2 = +prompt('Сколько это будет стоить?', 1000);
+let title
+let screens
+let screenPrice
+let adaptive
 let rollback = 50;
-
 let allServicePrices;
 let servicePercentPrice;
 let fullPrice;
+let service1;
+let service2;
+const isNumber = function (num) {
+    return !isNaN(parseFloat(num)) && isFinite(num)
+}
+const asking = function () {
+    title = prompt('Как называется ваш проект?', "пРоЕкТ");
+    screens = prompt('Какие типы экранов нужно разработать?', "Простые");
+    do {
+        screenPrice = prompt('Сколько будет стоить данная работа?');
+    } while (!isNumber(screenPrice));
+    
+    adaptive = confirm('Нужен ли адаптив на сайте?');
+}
 
 const getAllServicePrices = function () {
-    return servicePrice1 + servicePrice2;
+    let sum = 0;
+    let fullSum = 0;
+    for (i = 0; i < 2; i++) {
+        if (i === 0) {
+            service1 = prompt('Какой дополнительный тип услуги нужен?', "Метрика")
+        } else if (i === 1) {
+            service2 = prompt('Какой дополнительный тип услуги нужен?', "Метрика");
+        }
+        while (!isNumber(sum)) {
+            sum = prompt('Сколько это будет стоить?', 1000);
+        } 
+        fullSum+=sum;
+    }
+    return fullSum;
 };
 
 function getFullPrice() {
-    return parseInt(screenPrice) + parseInt(allServicePrices);
-}
-
-function getTitle() {
-    return 
+    return Number(screenPrice) + Number(allServicePrices);
 }
 
 function getServicePercentPrices() {
@@ -32,11 +50,11 @@ function getTitle(str) {
     return str
         .toLowerCase()
         .split(' ')
-        .map(function(word) {
+        .map(function (word) {
             return word[0].toUpperCase() + word.substr(1);
         })
         .join(' ');
-     }
+}
 switch (true) {
     case fullPrice >= 30000:
         console.log("Даем скидку в 10%");
@@ -51,8 +69,7 @@ switch (true) {
         console.log("Что то пошло не так");
         break;
 }
-
-allServicePrices = getAllServicePrices();
+asking();
 allServicePrices = getAllServicePrices();
 fullPrice = getFullPrice();
 title = getTitle(title);
